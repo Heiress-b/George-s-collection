@@ -1,0 +1,140 @@
+header {
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    background-image: url("../img/img/glasses-background-2.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    animation: 10s ease-out;
+    animation-name: change;
+}
+
+@keyframes change {
+    0%{
+        background-image: url(../img/img/glasses-backgroundimg-1.jpg);
+    }
+    25%{
+        background-image: url(../img/img/glasses-15.jpg);
+    }
+    50%{
+        background-image: url(../img/img/glasses-background.jpg);
+    }
+    75%{
+        background-image: url(../img/img/glasses-12.jpg);
+    }
+    100%{
+        background-image: url(../img/img/glasses-background-2.jpg);
+    }  
+}
+
+* {
+    list-style-type: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+@media (max-width:767px) {
+    header {
+        background-position-x: center;
+    }
+}
+
+#header-navs ul a {
+    color: white;
+}
+
+#header-navs ul a li:hover {
+    color: burlywood;
+}
+
+#header-navs ul li.active {
+    color: burlywood;
+}
+
+#header-button {
+    position: relative;
+    width: 160px;
+    height: 50px;
+    background-color: #EE2F5B;
+    overflow: hidden;
+}
+
+#header-button a.sponsor::after,.sponsor::before {
+    content: "MY ORDERS";
+    font-size: 12px;
+    position: absolute;
+    color: burlywood;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    transition: all 400ms;
+    left: 40px;
+    line-height: 4;
+}
+
+#header-button a.sponsor:hover::after {
+    left: -160px;
+}
+
+#header-button a.sponsor::before {
+    content: "PREVIEW ORDER(S)";
+    color: burlywood;
+    left: 160px;
+}
+
+#header-button a.sponsor:hover::before {
+    left: 0;
+}
+
+#menu-item {
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: black;
+}
+
+#menu-item img {
+    max-width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+#menu-item h3 {
+    margin-bottom: 10px;
+    color: burlywood;
+}
+
+#menu-item p {
+    color: burlywood;
+}
+
+#header-button #count {
+    position: absolute;
+    right: 20%;
+}
+
+#input {
+    position: relative;
+}
+
+#input .bi-search {
+    position: absolute;
+    right: 88%;
+    top: 25%;
+    padding-bottom: 15px;
+}
+
+.add-btn {
+    padding: 8px 15px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
