@@ -9,6 +9,14 @@ header {
     animation-name: change;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+       
+}
+
 @keyframes change {
     0%{
         background-image: url(../img/img/glasses-backgroundimg-1.jpg);

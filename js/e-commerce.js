@@ -26,7 +26,6 @@ function loadMall() {
             <img src="/img/img/${m.image}" alt="" height="300px">
             <h3>${m.title}</h3>
             <p>$${m.price}<sup> .99</sup></p>
-            <p>${m.author}</p>
             <div class="justify-content-between">
                 <a href="#display-cart"><button class="add-btn" onclick= "addToCart(${index})">Add to Cart</button></a>
             </div>
@@ -87,7 +86,7 @@ function addToCart(menuIndex) {
                     <p style="font-weight: bold;">Pack 1</p>
                 </div>
                 <div class="col-6 text-end">
-                    <i onclick="removeBook('0')"class="bi bi-trash" style="color: red;"></i>
+                    <i onclick="removeFood('0')"class="bi bi-trash" style="color: red;"></i>
                 </div>
                 <div class="col-6">
                     Name: ${menuItem.title}
@@ -120,7 +119,7 @@ function addToCart(menuIndex) {
                     <p style="font-weight: bold;">Your Book</p>
                 </div>
                 <div class="col-6 text-end">
-                    <i onclick="removeBook('0')"class="bi bi-trash" style="color: red;"></i>
+                    <i onclick="removeFood('0')"class="bi bi-trash" style="color: red;"></i>
                 </div>
                 <div class="col-6">
                     Dish: ${menuItem.title}
@@ -150,59 +149,58 @@ function addToCart(menuIndex) {
 
 
 
-// function removeFood(name) {
-//     let item = cart[name]
-//     let index = cart.find(cartitem => cartitem.name == item.name);
-//     if(index) {
-//         let notification = confirm('are you sure you would like to remove this item?')
-//         if(notification == true) {
-//             cart.splice(index)
-//             alert('your order has been removed')
+function removeFood(name) {
+    let item = cart[name]
+    let index = cart.find(cartitem => cartitem.name == item.name);
+    if(index) {
+        let notification = confirm('are you sure you would like to remove this item?')
+        if(notification == true) {
+            cart.splice(index)
+            alert('your order has been removed')
         
-//             document.getElementById('display-cart').innerHTML = ''
-//             updateLocalstorage()
-//         }else{
-//             addFood('index')
-//         }
-//     }
-// }
+            document.getElementById('display-cart').innerHTML = ''
+            updateLocalstorage()
+        }else{
+            addToCart('index')
+        }
+    }
+}
 
 
-// function sumCartTotal() {
-//     let totalCost = 0;
-//     cart.forEach(cartItem => {
-//         totalCost += cartItem.total
-//     });
-//     document.getElementById('display-total').innerHTML = `<p style="font-size: 30px;"> Your Total Bill is: $${totalCost}</p>`;
-// }
+function sumCartTotal() {
+    let totalCost = 0;
+    cart.forEach(cartItem => {
+        totalCost += cartItem.total
+    });
+    document.getElementById('display-total').innerHTML = `<p style="font-size: 30px;"> Your Total Bill is: $${totalCost}</p>`;
+}
 
-// function listCartItems() {
-//     let cartLi = '';
-//     if (cart.length == 0) {
-//         cartLi = `<li class="text-center" style="font-size: 80px;" id="cart-bg">your cart appears here!</li>`;
-//         // sumCartTotal()
-//     } else {
-//         cart.forEach((cartItem, index) => {
-//             cartLi += `
-//             <div id="menu-item" class="col-12">
-//             <h4>Item: ${cartItem.name}</h4>
-//             <p>Price: $${cartItem.price}</p>
-//             <p>Qty: ${cartItem.quantity}</p>
-//             <p>Total: $${cartItem.total}</p>
-//             <a href="payment.html" style="color: white;">
-//                 <button class="rounded-pill border-0 px-2 w-100" style="background-color: #02C27F;">Place Order</button>
-//             </a>
-//             <div class="col-6 text-end">
-//                 <i onclick="removeFood(${index})"class="bi bi-trash" style="color: white;"></i>
-//             </div>
-//         </div>`
-//         });
-//         // sumCartTotal()
-        
-//     }
+function listCartItems() {
+    let cartLi = '';
+    if (cart.length == 0) {
+        cartLi = `<li class="text-center" style="font-size: 80px;" id="cart-bg">your cart appears here!</li>`;
+        sumCartTotal()
+    } else {
+        cart.forEach((cartItem, index) => {
+            cartLi += `
+            <div id="menu-item" class="col-12">
+            <h3>Item: ${cartItem.title}</h3>
+            <p>Price: $${cartItem.price}</p>
+            <p>Qty: ${cartItem.quantity}</p>
+            <p>Total: $${cartItem.total}</p>
+            <a href="payment.html" style="color: white;">
+                <button class="rounded-pill border-0 px-2 w-100" style="background-color: #02C27F;">Place Order</button>
+            </a>
+            <div class="col-6 text-end">
+                <i onclick="removeBook(${index})"class="bi bi-trash" style="color: white;"></i>
+            </div>
+        </div>`
+        });
+        sumCartTotal()
+    }
 
-//     document.getElementById('display-cart').innerHTML = cartLi;
-// }
+    document.getElementById('display-cart').innerHTML = cartLi;
+}
 
 function cartNumber() {
     document.getElementById('count').innerHTML = cart.length;
@@ -213,6 +211,6 @@ function updateLocalstorage () {
 }
 
 
-// listCartItems()
-// sumCartTotal()
+listCartItems()
+sumCartTotal()
 
